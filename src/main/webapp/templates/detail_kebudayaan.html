@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org" ng-app="penulisan">
+    <head lang="en">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <p>hallo</p>
+        <div ng-view=""></div>
+
+
+        <script th:src="@{/webjars/angular/1.5.6/angular.min.js}" type="application/javascript"></script>
+        <script th:src="@{/webjars/angular-route/1.5.6/angular-route.min.js}" type="application/javascript"></script>
+        <script th:src="@{/angular/user/app.js}" type="application/javascript"></script>
+        <script th:src="@{/angular/user/services/kebudayaan.service.js}" type="application/javascript"></script>
+        <script th:src="@{/angular/user/controllers/kebudayaan.controller.js}" type="application/javascript"></script>
+        <script th:src="@{/angular/user/controllers/kebudayaan.detail.controller.js}" type="application/javascript"></script>
+
+    </body>
+</html>

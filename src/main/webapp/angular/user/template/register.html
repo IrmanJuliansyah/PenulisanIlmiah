@@ -1,0 +1,17 @@
+<form>
+    <div class="form-group">
+        <font size="5" <label>Email</label></font>
+        <input type="email" class="form-control" placeholder="Masukkan Username" ng-model="inputUser.email"/>
+    </div>
+    <div class="form-group">
+        <font size="5" <label>Password</label></font>
+        <input type="password" class="form-control" placeholder="Masukkan Password" ng-model="inputUser.password"/>
+    </div>
+
+</form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-warning" data-dismiss="modal">Batal</button>
+    <button ng-hide="enable" type="button" class="btn btn-success" data-dismiss="modal" ng-click="simpanUser(inputUser)">Register</button>
+
+</div>

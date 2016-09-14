@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/security
+       http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:http pattern="/api/kebudayaan/**" authentication-manager-ref="authenticationManager" create-session="stateless" use-expressions="true">
+        <security:intercept-url pattern="/**" method="GET" access="permitAll" />
+        <security:intercept-url pattern="/**" method="POST" access="hasRole('ADMIN')" />
+        <security:intercept-url pattern="/**" method="PUT" access="hasRole('ADMIN')" />
+        <security:intercept-url pattern="/**" method="DELETE" access="hasRole('ADMIN')" />
+        <security:custom-filter ref="corsFilter" before="CHANNEL_FILTER" />
+        <security:http-basic />
+        <security:csrf disabled="true" />
+    </security:http>
+
+    <security:http pattern="/api/user/**" authentication-manager-ref="authenticationManager" create-session="stateless" use-expressions="true">
+        <security:intercept-url pattern="/user/**" method="POST" access="permitAll" />
+        <security:custom-filter ref="corsFilter" before="CHANNEL_FILTER" />
+        <security:http-basic />
+        <security:csrf disabled="true" />
+    </security:http>
+
+    <security:http authentication-manager-ref="authenticationManager" use-expressions="true" auto-config="true">
+        <security:intercept-url pattern="/admin/**" access="hasRole('ADMIN')" />
+
+        <security:form-login
+                login-page="/login"
+                username-parameter="email"
+                password-parameter="password"
+                login-processing-url="/login"
+                authentication-failure-url="/login?error"
+                authentication-success-handler-ref="authenticationSuccessHandler"
+        />
+
+        <security:logout
+                logout-url="/logout"
+                delete-cookies="JSESSIONID"
+        />
+        <security:csrf disabled="true" />
+    </security:http>
+
+    <security:authentication-manager id="authenticationManager">
+        <security:authentication-provider user-service-ref="userLoginService">
+            <security:password-encoder ref="bCryptPasswordEncoder" />
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <bean id="bCryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+    <bean id="corsFilter" class="com.penulisan.ilmiah.configuration.CorsFilter" />
+
+    <bean id="authenticationSuccessHandler" class="com.penulisan.ilmiah.configuration.UrlAuthenticationSuccessHandler"/>
+
+</beans>

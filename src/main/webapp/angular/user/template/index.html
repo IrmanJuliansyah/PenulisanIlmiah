@@ -1,0 +1,32 @@
+<section id="packages" class="secPad">
+    <div class="container">
+        <div class="heading text-center">
+            <!-- Heading -->
+            <h2>Kebudayaan Indonesia</h2>
+            <p>Ayo Jelajahi Kebudayaan Indonesia</p>
+        </div>
+        <div class="row">
+            <div ng-repeat="k in dataKebudayaan">
+                <div class="col s12 m4">
+                    <div class="card">
+
+                        <div class="card-image">
+
+                            <img ng-src="/upload/{{k.gambar}}" class="img-responsive" alt="">
+
+                            <span class="card-title">{{k.judulKebudayaan}}</span>
+
+                            <div class="card-content">
+                                <p>{{k.judulKebudayaan}}</p>
+                            </div>
+                            <div class="card-action">
+                                <a class="waves-effect waves-light btn" ng-href="#/kebudayaan/{{k.idKebudayaan}}" >Selenkapnya</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

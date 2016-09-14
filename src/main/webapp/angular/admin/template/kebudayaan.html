@@ -1,0 +1,87 @@
+<h2>Data Kebudayaan</h2>
+
+<a href="/admin/upload">
+    <button class="btn btn-primary">
+        Tambah
+    </button>
+</a>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+            <tr>
+                <th>ID Kebudayaan</th>
+                <th>Judul Kebudayaan</th>
+                <th>Provinsi</th>
+                <th>Kategori</th>
+                <th>Gambar</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="k in dataKebudayaan">
+                <td>{{k.idKebudayaan}}</td>
+                <td>{{k.judulKebudayaan}}</td>
+                <td>{{k.provinsi}}</td>
+                <td>{{k.kategori}}</td>
+                <td>{{k.gambar}}</td>
+                <td ng-bind-html="k.deskripsi"></td>  
+                <td>
+                    <button class="btn btn-success" data-toggle="modal" data-target="#myModal" ng-click="editKebudayaan(k)">
+                        Edit
+                    </button>
+                    <button class="btn btn-danger" ng-click="hapusKebudayaan(k.idKebudayaan)">
+                        Hapus
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 ng-show="enable" class="modal-title">Tambah Data Kebudayaan</h4>
+                <h4 ng-hide="enable" class="modal-title">Edit Data Kebudayaan</h4>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div ng-hide="enable" class="form-group">
+                        <label>ID Kebudayaan</label>
+                        <input disabled="true" ng-model="inputDataKebudayaan.idKebudayaan" type="text" class="form-control" placeholder="ID Kebudayaan" />
+                    </div>
+                    <div class="form-group">
+                        <label>Judul Kebudayaan</label>
+                        <input ng-model="inputDataKebudayaan.judulKebudayaan" type="text" class="form-control" placeholder="Judul Kebudayaan" />
+                    </div>
+                    <div class="form-group">
+                        <label>Provinsi</label>
+                        <input ng-model="inputDataKebudayaan.provinsi" type="text" class="form-control" placeholder="Provinsi" />
+                    </div>
+                    <div class="form-group">
+                        <label>Kategori</label>
+                        <input ng-model="inputDataKebudayaan.kategori" type="text" class="form-control" placeholder="Kategori" />
+                    </div>
+                    <div class="form-group">
+                        <label>Gambar</label>
+                        <input ng-model="inputDataKebudayaan.gambar" type="text" class="form-control" placeholder="Kategori" />
+                    </div>
+                    <div class="form-group">
+                        <label>Deskripsi</label>
+                        <input ng-model="inputDataKebudayaan.deskripsi" type="text" class="form-control" placeholder="Kategori" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Cancel</button>
+                <button ng-click="simpanKebudayaan(inputDataKebudayaan)" ng-show="enable" type="button" class="btn btn-primary" data-dismiss="modal">Save</button>
+                <button ng-click="updateKebudayaan(inputDataKebudayaan)" ng-hide="enable" type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+            </div>
+        </div>
+    </div>
+</div>

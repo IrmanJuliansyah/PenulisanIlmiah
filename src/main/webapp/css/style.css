@@ -1,0 +1,51 @@
+.icon-block {
+    padding: 0 15px;
+}
+
+.container-fit {
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 75%;
+}
+
+.container-fit-wide {
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 80%;
+}
+
+.container-wide {
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 85%;
+}
+
+.container-wide-footer {
+    padding: 0 1.5rem;
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 95%;
+}
+
+.webium-logo {
+    width: 42px;
+    height: 42px;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+
+nav .web-logo {
+    position: absolute;
+    color: #fff;
+    display: inline-block;
+    padding: 0;
+}
+
+.border-color {
+    width: 100%;
+    max-width: 1280px;
+    max-height: 100px;
+}
